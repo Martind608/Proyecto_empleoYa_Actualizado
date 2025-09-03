@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Llama a la función en el modelo para registrar a la Empresa.
    
     if ($usuarioModelo->registrarEmpresa($RazonSocial, $SitioWeb, $CUIT, $email, $hashPassword, $telefono, $ciudad)) {
-        header("Location: ../views/index.php");
+         header("Location: ../public/index.php");
         // echo "Registro de la Empresa exitoso. Puedes iniciar sesión ahora.";
     } else {
        

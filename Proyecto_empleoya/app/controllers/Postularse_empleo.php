@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['accion']) && $_POST['
 
     // Puedes manejar el resultado aquí y mostrar un mensaje de éxito o error al usuario
     if ($resultado) {
-        header("Location: ../views/index.php");
+         header("Location: ../public/index.php");
         // echo '¡Postulación exitosa!';
     } else {
         echo 'Error al postularse';

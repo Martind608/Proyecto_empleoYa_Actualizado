@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
     if ($usuarioModelo->registrarPostulante($nombre, $apellido, $DNI, $email, $hashPassword, $telefono, $ciudad)) {
         
-        header("Location: ../views/index.php");
+        header("Location: ../public/index.php");
     } else {
         
         echo "Error en el registro de postulante. El correo electrónico ya existe.";

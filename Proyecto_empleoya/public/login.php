@@ -21,10 +21,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["FROM_LOGIN"]) && $_POS
             $_SESSION['tipo_usuario'] = $tipoUsuario;
 
             if ($tipoUsuario === 'postulante') {
-                header("Location: ../app/views/index.php");
+                 header("Location: ../public/index.php");
                 exit();
             } elseif ($tipoUsuario === 'empresa') {
-                header("Location: ../app/views/index.php");
+               header("Location: ../public/index.php");
                 exit();
             } elseif ($tipoUsuario === 'administrador') {
                 header("Location: ../app/views/admin/InicioAdmin.php");

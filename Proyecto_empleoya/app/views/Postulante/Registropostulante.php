@@ -50,7 +50,7 @@ require_once '../Footer_Header/header.php'; ?>
 
         </div>
         <div class='p-1'>
-            <a href="../../views/index.php">
+            <a href="../../public/index.php">
                 <button type="button" class='button border-0 m-1'>
                     Volver
                 </button>
