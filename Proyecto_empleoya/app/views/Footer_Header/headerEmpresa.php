@@ -13,7 +13,7 @@ $url="http://".$_SERVER['HTTP_HOST']."/Proyecto_empleoya/Proyecto_empleoya"
 
      <link rel="stylesheet" href="<?php echo $url; ?>/public/style/style.css">
 
-    <title>Header Empresa</title>
+    <title><?= $title ?? 'Empleo Ya!' ?></title>
 </head>
 
 <body>
@@ -90,6 +90,3 @@ $url="http://".$_SERVER['HTTP_HOST']."/Proyecto_empleoya/Proyecto_empleoya"
             </div>
         </nav>
     </header>
-</body>
-
-</html>

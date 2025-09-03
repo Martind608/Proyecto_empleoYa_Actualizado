@@ -1,9 +1,7 @@
 <?php
 session_start();
-?>
-
-<?php
-require_once "../Footer_Header/headerAdministrador.php";;
+$title = 'Bajas Empresa';
+require_once "../Footer_Header/headerAdministrador.php";
 ?>
 
     <section class='login-wrapper py-5 home-wrapper-2'>
@@ -112,16 +110,4 @@ require_once "../Footer_Header/headerAdministrador.php";;
             </div>
     </section>
 
-    <footer class='py-4 footer'>
-        <div class='row'>
-            <div class='col-12'>
-                <p class='text-center mb-0 text-white'>&copy; 2023: Desarrollado por Juan23</p>
-            </div>
-        </div>
-    </footer>
-
-
-
-</body>
-
-</html>
+<?php require_once '../Footer_Header/footer.php'; ?>

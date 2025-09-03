@@ -1,6 +1,7 @@
 <?php
 // Inicia la sesión al principio del archivo
 session_start();
+$title = 'Inicio';
 ?>
 <?php
 // Verifica si la sesión tiene una clave 'tipo_usuario'.
@@ -128,14 +129,4 @@ if (isset($_SESSION['tipo_usuario'])) {
         </div>
     </section>
 
-    <footer class='py-4 footer'>
-        <div class='row'>
-            <div class='col-12'>
-                <p class='text-center mb-0 text-white'>&copy; 2023: Desarrollado por Juan23</p>
-            </div>
-        </div>
-    </footer>
-
-</body>
-
-</html>
+<?php require_once 'Footer_Header/footer.php'; ?>

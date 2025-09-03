@@ -33,11 +33,6 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">¿Quienes Somos?</a>
-                    </li>
-                </ul>  -->
 
                     <ul class="navbar-nav ms-auto ">
                         <div class='d-flex justify-content-center gap-15 align-items-center'>
@@ -77,13 +72,4 @@
         </div>
     </section>
 
-    <footer class='py-4 footer'>
-        <div class='row'>
-            <div class='col-12'>
-                <p class='text-center mb-0 text-white'>&copy; 2023: Desarrollado por Juan23</p>
-            </div>
-        </div>
-    </footer>
-</body>
-
-</html>
+<?php require_once '../Footer_Header/footer.php'; ?>
