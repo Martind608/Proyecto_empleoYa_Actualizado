@@ -4,8 +4,7 @@ $title = 'Editar Perfil';
 require_once "../Footer_Header/headerPostulante.php";
 ?>
 
-require_once "../Footer_Header/headerPostulante.php";
-?>
+
 
     <section class='login-wrapper py-5 home-wrapper-2'>
         <div class="container-xxl">
