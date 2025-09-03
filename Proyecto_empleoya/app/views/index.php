@@ -26,33 +26,12 @@ if (isset($_SESSION['tipo_usuario'])) {
             <div class="d-flex justify-content-center">
                 <div class="container-fluid">
                     <div class="row d-flex justify-content-center">
-                        <!-- Brand List -->
-                        <!-- <div class="col-md-3">
-                            <form action="" method="GET">
-                                <div class="card shadow mt-3">
-                                    <div class="card-header">
-                                        <h5>Filtros
-                                            <button type="submit" class="btn btn-primary btn-sm float-end">Buscar</button>
-                                        </h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <h6>AREAS</h6> -->
-                        <!-- <hr> -->
-                        <!-- Áreas obtenidas desde el controlador -->
-                        <!-- PHP loop removed for HTML cleanliness -->
-                        <!-- Checkbox input and labels -->
-                        <!-- </div>
-                                </div>
-                            </form>
-                        </div> -->
 
                         <!-- Brand Items - Products -->
                         
                         <div class="">
                             <!-- Trabajos obtenidos desde el controlador -->
                             <?php
-                            // Mostrar los datos actuales del usuario
-                            /* session_start(); */
                             require_once '../../config/database.php'; // Agrega esta línea para incluir la configuración
                             require_once '../controllers/UsuarioControlador.php'; // Agrega esta línea para incluir el controlador
 
@@ -64,8 +43,7 @@ if (isset($_SESSION['tipo_usuario'])) {
                                 $emailPostulante = $_SESSION['Email']; // Obtener el email del postulante desde la sesión
                                 $idPostulante = $controller->obtenerIDUsuario($emailPostulante); // Obtener el ID del postulante               
                             }  
-                            // $emailPostulante = $_SESSION['Email']; // Obtener el email del postulante desde la sesión
-                            // $idPostulante = $controller->obtenerIDUsuario($emailPostulante); // Obtener el ID del postulante
+
 
                             $ofertas = $controller->obtenerOfertas($usuarioModelo);
 
@@ -77,7 +55,6 @@ if (isset($_SESSION['tipo_usuario'])) {
                         
                                 echo '<form method="POST" enctype="multipart/form-data" action="../controllers/Postularse_empleo.php">';
                                 echo '<div class="col-md-11">';
-                               
                                 echo '<h4 class="justify-content-center">' . $oferta['IDEmpleo'] . '</h4>';
                                 echo '<div class="card card-body border border-5 rounded">';
                                 echo '<h4 class="card-title">' . $oferta['Titulo'] . '</h4>';

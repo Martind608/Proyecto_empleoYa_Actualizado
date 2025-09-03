@@ -1,3 +1,7 @@
+<?php
+$url="http://".$_SERVER['HTTP_HOST']."/Proyecto_empleoya/Proyecto_empleoya"
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,17 +12,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
-    <link rel="stylesheet" href="../../../public/style/style.css">
+    <link rel="stylesheet" href="<?php echo $url; ?>/public/style/style.css">
 
     <title>Index</title>
 </head>
 
 <body>
 
-<?php
-$url="http://".$_SERVER['HTTP_HOST']."/Proyecto_empleoya/Proyecto_empleoya"
 
-?>
     <header>
         <nav class="navbar navbar-expand-lg bg-light ">
             <div class="container-fluid d-flex justify-content-center">
