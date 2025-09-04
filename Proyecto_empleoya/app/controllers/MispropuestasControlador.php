@@ -4,14 +4,14 @@
 require_once '../../config/database.php';
 require_once '../models/UsuarioModelo.php';
 require_once '../controllers/UsuarioControlador.php';
-
+require_once '../../config/csrf.php';
 // Verificar si el usuario ha iniciado sesión 
 session_start();
 if (!isset($_SESSION['Email'])) {
     header("Location: inicio_de_sesion.php"); // Redirige al inicio de sesión si no está autenticado
     exit();
 }
-
+verify_csrf_token();
 // Inicializa la instancia del controlador y el modelo
 $db = new Database();
 $usuarioModelo = new UsuarioModelo($db);

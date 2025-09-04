@@ -1,5 +1,7 @@
 <?php
 $url="http://".$_SERVER['HTTP_HOST']."/Proyecto_empleoya/Proyecto_empleoya";
+require_once __DIR__ . '/../../../config/csrf.php';
+$csrf_token = csrf_token();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,8 +14,18 @@ $url="http://".$_SERVER['HTTP_HOST']."/Proyecto_empleoya/Proyecto_empleoya";
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <link rel="stylesheet" href="<?php echo $url; ?>/public/style/style.css">
-
-      <title><?= $title ?? 'Empleo Ya!' ?></title>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('form').forEach(function(form) {
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'csrf_token';
+            input.value = '<?php echo htmlspecialchars($csrf_token, ENT_QUOTES, "UTF-8"); ?>';
+            form.appendChild(input);
+        });
+    });
+    </script>
+    <title><?= $title ?? 'Empleo Ya!' ?></title>
 </head>
 
 <body>

@@ -1,8 +1,10 @@
 <?php
-require_once '../../config/database.php'; 
-require_once '../models/UsuarioModelo.php'; 
+require_once '../../config/database.php';
+require_once '../models/UsuarioModelo.php';
+require_once '../../config/csrf.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    verify_csrf_token();
     $db = new Database();
     $usuarioModelo = new UsuarioModelo($db);
 

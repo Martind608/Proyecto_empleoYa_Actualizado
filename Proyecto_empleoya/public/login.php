@@ -2,8 +2,10 @@
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../app/models/UsuarioModelo.php';
 require_once __DIR__ . '/../app/controllers/UsuarioControlador.php';
+require_once __DIR__ . '/../config/csrf.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && filter_input(INPUT_POST, "FROM_LOGIN") === "true") {
+        verify_csrf_token();
     $db = new Database();
     $usuarioModelo = new UsuarioModelo($db);
     $controller = new UsuarioControlador($usuarioModelo);

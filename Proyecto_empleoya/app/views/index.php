@@ -80,6 +80,6 @@ if (isset($_SESSION['tipo_usuario'])) {
                 </div>
             </div>
         </div>
-          </div>
+        </div>
 </section>
 <?php require_once __DIR__ . '/Footer_Header/footer.php'; ?>

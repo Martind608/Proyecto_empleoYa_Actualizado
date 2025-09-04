@@ -4,6 +4,9 @@ session_start();
 require_once ('./../../config/database.php');
 require_once ('UsuarioControlador.php');
 require_once(__DIR__ . '/../models/UsuarioModelo.php');
+require_once __DIR__ . '/../../config/csrf.php';
+
+verify_csrf_token();
 
 // Verificar si se ha enviado la acción "accion" desde el formulario
 

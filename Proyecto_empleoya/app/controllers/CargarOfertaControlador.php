@@ -1,8 +1,10 @@
 <?php
 require_once '../../config/database.php'; // Asegúrate de tener el archivo de configuración de la base de datos
 require_once '../models/UsuarioModelo.php'; // Asegúrate de tener el modelo de usuario importado
-
+require_once '../../config/csrf.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    verify_csrf_token();
+    
     $db = new Database();
     $usuarioModelo = new UsuarioModelo($db);
     session_start();
