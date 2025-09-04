@@ -9,6 +9,8 @@ $csrf_token = csrf_token();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -29,20 +31,14 @@ $csrf_token = csrf_token();
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg header-upper">
+        <nav class="navbar navbar-expand-lg navbar-gradient">
             <div class="container-fluid">
-                <div class="row align-items-center flex-column p-1 m-1">
-                    <div class="col text-center">
-                    <a class="navbar-brand p-0 m-0" href="<?php echo $url; ?>/public/index.php">Empleo Ya!</a>
-                    </div>
-                    <div class="col text-center">
-                        <img src="<?php echo $url; ?>/public/img/iconoJuan23.png" height="50" width="50">
-                    </div>
-                </div>
-
+                <a class="navbar-brand p-0 m-0" href="<?php echo $url; ?>/public/index.php">
+                    <img src="<?php echo $url; ?>/public/img/EmpleoYa.png" alt="Empleo Ya" height="50">
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                    aria-expanded="false" aria-label="Abrir menú">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 

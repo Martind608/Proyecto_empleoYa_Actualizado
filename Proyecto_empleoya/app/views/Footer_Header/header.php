@@ -10,6 +10,7 @@ $csrf_token = csrf_token();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -32,25 +33,19 @@ $csrf_token = csrf_token();
 
 
     <header>
-    <nav class="navbar navbar-expand-lg header-upper">
-            <div class="container-fluid d-flex justify-content-center">
-                <div class="row align-items-center flex-column p-1 m-1">
-                    <div class="col text-center">
-                    <a class="navbar-brand p-0 m-0" href="<?php echo $url; ?>/public/index.php"></a>
-                    </div>
-                    <div class="col text-center">
-                        <img src="<?php echo $url; ?>/public/img/iconoJuan23.png" height="50" width="50">
-                    </div>
-                </div>  
-
-                <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        <nav class="navbar navbar-expand-lg navbar-gradient">
+            <div class="container-fluid">
+                <a class="navbar-brand p-0 m-0" href="<?php echo $url; ?>/public/index.php">
+                    <img src="<?php echo $url; ?>/public/img/iconoJuan23.png" alt="Empleo Ya" height="50">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                    aria-expanded="false" aria-label="Abrir menú">
                     <span class="navbar-toggler-icon"></span>
-                </button> -->
+                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
+
                     <ul class="navbar-nav ms-auto ">
                         <div class='d-flex justify-content-center gap-15 align-items-center'>
                             <a href="<?php echo $url; ?>/app/views/login.php">
@@ -70,17 +65,7 @@ $csrf_token = csrf_token();
                             
                         </div>              
                     </ul>
-                </div>
-
-                <!-- CERRAR SESION Button -->
-                <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto ">
-                        <div class='d-flex justify-content-center gap-15 align-items-center'>
-                            <form id="Cerrarsesion-form" action="cerrarsesion.php" method="post">
-                                <button class='btn-secondary button border-0' type='submit'>Cerrar Sesión</button>
-                            </form>
-                        </div>
-                    </ul>
-                </div> -->
+    </div>  
+    </div>
         </nav>
     </header>
