@@ -32,11 +32,11 @@ $csrf_token = csrf_token();
 
 
     <header>
-        <nav class="navbar navbar-expand-lg bg-light ">
+    <nav class="navbar navbar-expand-lg header-upper">
             <div class="container-fluid d-flex justify-content-center">
                 <div class="row align-items-center flex-column p-1 m-1">
                     <div class="col text-center">
-                    <a class="navbar-brand p-0 m-0" href="<?php echo $url; ?>/public/index.php">Empleo Ya!</a>
+                    <a class="navbar-brand p-0 m-0" href="<?php echo $url; ?>/public/index.php"></a>
                     </div>
                     <div class="col text-center">
                         <img src="<?php echo $url; ?>/public/img/iconoJuan23.png" height="50" width="50">

@@ -40,13 +40,15 @@ if (isset($_SESSION['tipo_usuario'])) {
                                             <p class="card-text"> TipoEmpleo: <?php echo $oferta['TipoEmpleo']; ?></p>
                                             <p class="card-text"> Descripcion <?php echo $oferta['Descripcion']; ?></p>
                                             <p class="card-text"> Salario <?php echo $oferta['Salario']; ?></p>
-                                            <button class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#inicioSesion" type="button" style="display: inline-block; width: 150px;">Ver Más</button>
+                                            <!-- <button class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#inicioSesion" type="button" style="display: inline-block; width: 150px;">Ver Más</button> -->
+                                            <button class="btn btn-primary m-1 btn-ver-mas" data-bs-toggle="modal" data-bs-target="#inicioSesion" type="button">Ver Más</button>
                                             <input type="hidden" class="form-control" name="id_empresa" value="<?php echo $oferta['IDEmpresa']; ?>">
                                             <input type="hidden" name="IDEmpleo" value="<?php echo $oferta['IDEmpleo']; ?>">
                                             <?php if (isset($_SESSION['tipo_usuario']) && $_SESSION['tipo_usuario'] == 'postulante' && !$oferta['usuarioYaPostulado']) : ?>
                                                 <input type="hidden" name="IDPostulante" value="<?php echo $idPostulante; ?>">
                                                 <input type="hidden" name="accion" value="postularse">
-                                                <input type="submit" value="Postularse" class="btn-secondary button border-0" style="width: 155px;">
+                                                <!-- <input type="submit" value="Postularse" class="btn-secondary button border-0" style="width: 155px;"> -->
+                                                <input type="submit" value="Postularse" class="btn-secondary button border-0 btn-postularse">
                                             <?php endif; ?>
                                         </div>
                                     </div>

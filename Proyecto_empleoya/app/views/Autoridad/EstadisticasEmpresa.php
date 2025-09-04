@@ -21,7 +21,7 @@
                             <div class="col-md-3 mb-4">
                                 <div class="container mt-5">
                                     <div class="card d-flex flex-column align-items-center justify-content-center p-3">
-                                        <div class="d-flex justify-content-center align-items-center" style="width: 64px; height: 64px;">
+                                        <div class="d-flex justify-content-center align-items-center avatar-64">
                                             <img src="../../../public/img/usuario.png" alt="Imagen de usuario" class="img-fluid">
                                         </div>
                                         
@@ -42,7 +42,7 @@
                             <div class="col-md-3 mb-4">
                                 <div class="container mt-5">
                                     <div class="card d-flex flex-column align-items-center justify-content-center p-3">
-                                        <div class="d-flex justify-content-center align-items-center" style="width: 64px; height: 64px;">
+                                        <div class="d-flex justify-content-center align-items-center avatar-64">
                                             <img src="../../../public/img/usuario.png" alt="Imagen de usuario" class="img-fluid">
                                         </div>
                                         
@@ -63,7 +63,7 @@
                             <div class="col-md-3 mb-4">
                                 <div class="container mt-5">
                                     <div class="card d-flex flex-column align-items-center justify-content-center p-3">
-                                        <div class="d-flex justify-content-center align-items-center" style="width: 64px; height: 64px;">
+                                        <div class="d-flex justify-content-center align-items-center avatar-64">
                                             <img src="../../../public/img/usuario.png" alt="Imagen de usuario" class="img-fluid">
                                         </div>
                                         
@@ -84,7 +84,7 @@
                             <div class="col-md-3 mb-4">
                                 <div class="container mt-5">
                                     <div class="card d-flex flex-column align-items-center justify-content-center p-3">
-                                        <div class="d-flex justify-content-center align-items-center" style="width: 64px; height: 64px;">
+                                        <div class="d-flex justify-content-center align-items-center avatar-64">
                                             <img src="../../../public/img/usuario.png" alt="Imagen de usuario" class="img-fluid">
                                         </div>
                                         
@@ -106,7 +106,7 @@
                             <div class="col-md-3 mb-4">
                                 <div class="container mt-5">
                                     <div class="card d-flex flex-column align-items-center justify-content-center p-3">
-                                        <div class="d-flex justify-content-center align-items-center" style="width: 64px; height: 64px;">
+                                        <div class="d-flex justify-content-center align-items-center avatar-64">
                                             <img src="../../../public/img/usuario.png" alt="Imagen de usuario" class="img-fluid">
                                         </div>
                                         
@@ -127,7 +127,7 @@
                             <div class="col-md-3 mb-4">
                                 <div class="container mt-5">
                                     <div class="card d-flex flex-column align-items-center justify-content-center p-3">
-                                        <div class="d-flex justify-content-center align-items-center" style="width: 64px; height: 64px;">
+                                        <div class="d-flex justify-content-center align-items-center avatar-64">
                                             <img src="../../../public/img/usuario.png" alt="Imagen de usuario" class="img-fluid">
                                         </div>
                                         
@@ -148,7 +148,7 @@
                             <div class="col-md-3 mb-4">
                                 <div class="container mt-5">
                                     <div class="card d-flex flex-column align-items-center justify-content-center p-3">
-                                        <div class="d-flex justify-content-center align-items-center" style="width: 64px; height: 64px;">
+                                        <div class="d-flex justify-content-center align-items-center avatar-64">
                                             <img src="../../../public/img/usuario.png" alt="Imagen de usuario" class="img-fluid">
                                         </div>
                                         
@@ -169,7 +169,7 @@
                             <div class="col-md-3 mb-4">
                                 <div class="container mt-5">
                                     <div class="card d-flex flex-column align-items-center justify-content-center p-3">
-                                        <div class="d-flex justify-content-center align-items-center" style="width: 64px; height: 64px;">
+                                        <div class="d-flex justify-content-center align-items-center avatar-64">
                                             <img src="../../../public/img/usuario.png" alt="Imagen de usuario" class="img-fluid">
                                         </div>
                                         

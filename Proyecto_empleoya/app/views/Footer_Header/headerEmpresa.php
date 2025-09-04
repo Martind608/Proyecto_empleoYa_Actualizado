@@ -29,7 +29,7 @@ $csrf_token = csrf_token();
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-light">
+        <nav class="navbar navbar-expand-lg header-upper">
             <div class="container-fluid">
                 <div class="row align-items-center flex-column p-1 m-1">
                     <div class="col text-center">

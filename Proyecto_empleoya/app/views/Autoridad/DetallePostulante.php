@@ -27,7 +27,7 @@
 
                     <div class="col-md-8">
                         <!-- Gráfico -->
-                        <canvas id="myChart" style="width: 100%; height: 400px;"></canvas>
+                    <canvas id="myChart" class="chart-canvas"></canvas>  
                     </div>
                 </div>
             </div>
