@@ -3,6 +3,7 @@ session_start();
 $title = 'Registrar Autoridad';
 require_once "../Footer_Header/headerAdministrador.php";
 ?>
+<main>
     <section class='login-wrapper py-5 home-wrapper-2'>
         <div class='row'>
             <div class='col-12'>
@@ -54,5 +55,5 @@ require_once "../Footer_Header/headerAdministrador.php";
             </a>
         </div>
     </section>
-
+</main>
 <?php require_once '../Footer_Header/footer.php'; ?>

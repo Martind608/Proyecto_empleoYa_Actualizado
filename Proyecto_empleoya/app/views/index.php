@@ -29,28 +29,18 @@ if (isset($_SESSION['tipo_usuario'])) {
                         <?php if (!empty($ofertas)) : ?>
                             <?php foreach ($ofertas as $oferta) : ?>
                                 <form method="POST" enctype="multipart/form-data" action="../app/controllers/Postularse_empleo.php">
-                                    <div class="col-md-11">
-                                        <h4 class="justify-content-center"><?php echo $oferta['IDEmpleo']; ?></h4>
-                                        <div class="card card-body border border-5 rounded">
-                                            <h4 class="card-title"><?php echo $oferta['Titulo']; ?></h4>
-                                            <p class="card-text">Fecha Publicacion: <?php echo $oferta['FechaPublicacion']; ?></p>
-                                            <p class="card-text"> Empresa: <?php echo $oferta['nombreEmpresa']; ?></p>
-                                            <p class="card-text"> Modalidad: <?php echo $oferta['Modalidad']; ?></p>
-                                            <p class="card-text"> Ubicacion: <?php echo $oferta['Ubicacion']; ?></p>
-                                            <p class="card-text"> TipoEmpleo: <?php echo $oferta['TipoEmpleo']; ?></p>
-                                            <p class="card-text"> Descripcion <?php echo $oferta['Descripcion']; ?></p>
-                                            <p class="card-text"> Salario <?php echo $oferta['Salario']; ?></p>
-                                            <!-- <button class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#inicioSesion" type="button" style="display: inline-block; width: 150px;">Ver Más</button> -->
-                                            <button class="btn btn-primary m-1 btn-ver-mas" data-bs-toggle="modal" data-bs-target="#inicioSesion" type="button">Ver Más</button>
-                                            <input type="hidden" class="form-control" name="id_empresa" value="<?php echo $oferta['IDEmpresa']; ?>">
-                                            <input type="hidden" name="IDEmpleo" value="<?php echo $oferta['IDEmpleo']; ?>">
-                                            <?php if (isset($_SESSION['tipo_usuario']) && $_SESSION['tipo_usuario'] == 'postulante' && !$oferta['usuarioYaPostulado']) : ?>
-                                                <input type="hidden" name="IDPostulante" value="<?php echo $idPostulante; ?>">
-                                                <input type="hidden" name="accion" value="postularse">
-                                                <!-- <input type="submit" value="Postularse" class="btn-secondary button border-0" style="width: 155px;"> -->
-                                                <input type="submit" value="Postularse" class="btn-secondary button border-0 btn-postularse">
-                                            <?php endif; ?>
-                                        </div>
+                                        <div class="job-card shadow-sm p-3 mb-3">
+                                        <h5><?php echo $oferta['Titulo']; ?></h5>
+                                        <p class="mb-1"><?php echo $oferta['nombreEmpresa']; ?></p>
+                                        <p class="text-muted mb-3"><?php echo $oferta['Modalidad']; ?> | <?php echo $oferta['Ubicacion']; ?> | <?php echo $oferta['Salario']; ?></p>
+                                        <a href="#" class="btn btn-primary-custom" data-bs-toggle="modal" data-bs-target="#inicioSesion">Ver más</a>
+                                        <input type="hidden" class="form-control" name="id_empresa" value="<?php echo $oferta['IDEmpresa']; ?>">
+                                        <input type="hidden" name="IDEmpleo" value="<?php echo $oferta['IDEmpleo']; ?>">
+                                        <?php if (isset($_SESSION['tipo_usuario']) && $_SESSION['tipo_usuario'] == 'postulante' && !$oferta['usuarioYaPostulado']) : ?>
+                                            <input type="hidden" name="IDPostulante" value="<?php echo $idPostulante; ?>">
+                                            <input type="hidden" name="accion" value="postularse">
+                                            <input type="submit" value="Postularse" class="btn-secondary button border-0 btn-postularse">
+                                        <?php endif; ?>
                                     </div>
                                 </form>
                             <?php endforeach; ?>
@@ -79,9 +69,31 @@ if (isset($_SESSION['tipo_usuario'])) {
                             
                     </div>
 
+                        </div>
+
+                    <!-- Modal Postulación Exitosa -->
+                    <div class="modal fade" id="postulacionExitosa" tabindex="-1" aria-labelledby="postulacionExitosaLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="postulacionExitosaLabel">Éxito</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    ¡Te has postulado con éxito!
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
         </div>
 </section>
+<?php if (isset($_GET['postulacion']) && $_GET['postulacion'] === 'exito'): ?>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        new bootstrap.Modal(document.getElementById('postulacionExitosa')).show();
+    });
+</script>
+<?php endif; ?>
 <?php require_once __DIR__ . '/Footer_Header/footer.php'; ?>

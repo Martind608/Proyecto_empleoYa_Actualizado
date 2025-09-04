@@ -24,7 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && filter_input(INPUT_POST, 'accion') 
 
     // Puedes manejar el resultado aquí y mostrar un mensaje de éxito o error al usuario
     if ($resultado) {
-        header("Location: ../public/index.php");
+            header("Location: ../../public/index.php?postulacion=exito");
+
         // echo '¡Postulación exitosa!';
     } else {
         echo 'Error al postularse';

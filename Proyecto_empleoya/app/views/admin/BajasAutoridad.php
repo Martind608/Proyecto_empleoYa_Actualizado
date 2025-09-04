@@ -3,6 +3,7 @@ session_start();
 $title = 'Bajas Autoridad';
 require_once "../Footer_Header/headerAdministrador.php";
 ?>
+<main>
     <section class='login-wrapper py-5 home-wrapper-2'>
         <div class="container-xxl">
             <div class='d-flex justify-content-center p-1'>
@@ -106,5 +107,5 @@ require_once "../Footer_Header/headerAdministrador.php";
                 </div>
             </div>
     </section>
-
+</main>
 <?php require_once '../Footer_Header/footer.php'; ?>

@@ -35,7 +35,7 @@
             </div>
         </nav>
     </header>
-
+<main>
     <section class='login-wrapper py-5 home-wrapper-2'>
         <div class='row'>
             <div class='col-12'>
@@ -76,5 +76,5 @@
             </div>
         </div>
     </section>
-
+</main>
 <?php require_once '../Footer_Header/footer.php'; ?>

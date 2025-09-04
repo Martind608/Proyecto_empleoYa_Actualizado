@@ -23,7 +23,8 @@ require_once "../Footer_Header/headerEmpresa.php";
 
                     // Llamar a la función para obtener las ofertas de la empresa
                     $ofertas = $controller->obtenerMisPropuestas($datosIDEmpresa);
-
+                    
+                    // $nombreEmpresa = $controller->obtenerNombreEmpresaPorID($datosIDEmpresa);
                     if ($ofertas) {
                         foreach ($ofertas as $oferta) {
                             // echo '<form method="POST" enctype="multipart/form-data" action="../controllers/Postularse_empleo.php">';
@@ -37,7 +38,8 @@ require_once "../Footer_Header/headerEmpresa.php";
                             echo'<p class="card-text"><strong>Requisitos: '. $oferta['TipoEmpleo'] . '</strong></p>';
                             echo'<p class="card-text"><strong>Ubicación: '. $oferta['Ubicacion'] . '</strong></p>';
                             echo'<p class="card-text"><strong>Salario: '. $oferta['Salario'] . '</strong></p>';
-                            echo'<p class="card-text"><strong>Fecha de Publicación: '. $oferta['FechaPublicacion'] . '</strong></p>';                         
+                            echo'<p class="card-text"><strong>Fecha de Publicación: '. $oferta['FechaPublicacion'] . '</strong></p>';
+                            echo '<a class="button border-0 m-1" href="#" data-bs-toggle="modal" data-bs-target="#modal'. $oferta['IDEmpleo'] . '">Ver más</a>';                      
                             // Agregar los botones dentro del mismo div del contenido de la oferta
                             echo '<button class="button border-0 m-1" href="#" data-bs-toggle="modal" data-bs-target="#modificar">Modificar</button>';
                             echo '<button class="button border-0 m-1" href="#" data-bs-toggle="modal" data-bs-target="#postulados">Postulados</button>';
@@ -53,7 +55,28 @@ require_once "../Footer_Header/headerEmpresa.php";
                             echo '<p>No se encontraron ofertas laborales.</p>';
                             }
                         ?>
-
+                    <?php if ($ofertas) { foreach ($ofertas as $oferta) : ?>
+                        <div class="modal fade" id="modal<?= $oferta['IDEmpleo']; ?>" tabindex="-1" aria-labelledby="modalLabel<?= $oferta['IDEmpleo']; ?>" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="modalLabel<?= $oferta['IDEmpleo']; ?>"><?= $oferta['Titulo']; ?></h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p><strong>Descripción:</strong> <?= $oferta['Descripcion']; ?></p>
+                                        <p><strong>Modalidad:</strong> <?= $oferta['Modalidad']; ?></p>
+                                        <p><strong>Ubicación:</strong> <?= $oferta['Ubicacion']; ?></p>
+                                        <p><strong>Salario:</strong> <?= $oferta['Salario']; ?></p>
+                                        <p><strong>Fecha de Publicación:</strong> <?= $oferta['FechaPublicacion']; ?></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; } ?>
                 <!-- MODAL MODIFICAR (ventana emergente) -->
                 <div class="modal fade" id="modificar" tabIndex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
@@ -111,6 +134,7 @@ require_once "../Footer_Header/headerEmpresa.php";
                         </div>
                     </div>
                 </div>
+
 
                 <!-- MODAL POSTULADOS (ventana emergente) -->
                 <div class="modal fade" id="postulados" tabIndex="-1" aria-labelledby="exampleModalLabel"

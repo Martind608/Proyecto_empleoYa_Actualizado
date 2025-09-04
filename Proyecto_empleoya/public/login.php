@@ -34,10 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && filter_input(INPUT_POST, "FROM_LOGIN
                 header("Location: ../public/index.php");
                 exit();
             } elseif ($tipoUsuario === 'administrador') {
-                header("Location: ../app/views/admin/InicioAdmin.php");
+                header("Location: ../public/index.php");
                 exit();
             } elseif ($tipoUsuario === 'autoridad') {
-                header("Location: ../app/views/Autoridad/InicioAutoridad.php");
+                header("Location: ../public/index.php");
                 exit();
             } else {
                 header("Location: index.php");
