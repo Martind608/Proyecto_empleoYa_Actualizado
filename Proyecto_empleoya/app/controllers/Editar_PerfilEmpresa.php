@@ -17,15 +17,35 @@ $db = new Database();
 $usuarioModelo = new UsuarioModelo($db);
 $controller = new UsuarioControlador($usuarioModelo);
 
-// Obtener datos del formulario
+// Obtener datos del formulario de manera segura
 $email = $_SESSION['Email'];
-$razonSocial = $_POST["razonSocial"];
-$sitioWeb = $_POST["sitioWeb"];
-$cuit = $_POST["cuit"];
-$ciudad = $_POST["ciudad"];
-$emailContacto = $_POST["email"];
-$telefono = $_POST["telefono"];
-$nuevaPassword = $_POST["password"];
+$errors = [];
+
+$razonSocial = filter_input(INPUT_POST, "razonSocial", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+if (!$razonSocial) { $errors[] = "Razón social inválida."; }
+
+$sitioWeb = filter_input(INPUT_POST, "sitioWeb", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+if (!$sitioWeb) { $errors[] = "Sitio web inválido."; }
+
+$cuit = filter_input(INPUT_POST, "cuit", FILTER_SANITIZE_NUMBER_INT);
+if (!$cuit) { $errors[] = "CUIT inválido."; }
+
+$ciudad = filter_input(INPUT_POST, "ciudad", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+if (!$ciudad) { $errors[] = "Ciudad inválida."; }
+
+$emailContacto = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
+if (!$emailContacto) { $errors[] = "Email de contacto inválido."; }
+
+$telefono = filter_input(INPUT_POST, "telefono", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+if (!$telefono) { $errors[] = "Teléfono inválido."; }
+
+$nuevaPassword = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+if (!$nuevaPassword) { $errors[] = "Contraseña inválida."; }
+
+if ($errors) {
+    echo implode('<br>', $errors);
+    exit;
+}
 
 
 if ($controller->actualizarDatosEmpresaContacto($email, $razonSocial, $sitioWeb, $cuit, $emailContacto, $telefono, $ciudad, $nuevaPassword)) {

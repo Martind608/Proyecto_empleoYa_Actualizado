@@ -7,17 +7,16 @@ require_once ('UsuarioControlador.php');
 require_once(__DIR__ . '/../models/UsuarioModelo.php');
 
 // Verificar si se ha enviado la acción "accion" desde el formulario
-if (isset($_POST['accion'])) {
-    $accion = $_POST['accion'];
-    $idUsuario = $_POST['IDUsuario'];
-
+$accion = filter_input(INPUT_POST, 'accion', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$idUsuario = filter_input(INPUT_POST, 'IDUsuario', FILTER_VALIDATE_INT);
+if ($accion && $idUsuario !== false) {
     // Conectar a la base de datos
     $db = new Database();
     $usuarioModelo = new UsuarioModelo($db);
     $controller = new UsuarioControlador($usuarioModelo);
 
     // Validar el valor de la variable $idUsuario
-    if (!is_numeric($idUsuario)) {
+ if ($idUsuario === false) {
         echo "Error: IDUsuario no es un número válido.";
         return;
     }
@@ -33,8 +32,8 @@ if (isset($_POST['accion'])) {
         }
 
 } else {
-    // Error: "accion" no está definida en la solicitud
-    echo "Error: Acción no está definida en la solicitud.";
+    // Error: "accion" o IDUsuario no válidos
+    echo "Error: Acción o ID de usuario no válidos.";
 }
 }
 ?>

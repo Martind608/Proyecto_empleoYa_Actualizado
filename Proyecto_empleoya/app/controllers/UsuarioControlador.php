@@ -11,7 +11,7 @@ class UsuarioControlador {
         $this->usuarioModelo = $usuarioModelo;
     }
 
-   
+
     public function verificarCredenciales($email, $password) {
         // Verifica las credenciales en el modelo
         $verificado = $this->usuarioModelo->verificarCredenciales($email, $password);

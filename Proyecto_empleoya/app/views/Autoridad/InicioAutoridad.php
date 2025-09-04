@@ -19,7 +19,7 @@
             <div class="container-fluid d-flex justify-content-center p-2 m-2">
                 <div class="row align-items-center flex-column p-1 m-1">
                     <div class="col text-center">
-                      <a class="navbar-brand p-0 m-0" href="../../public/index.php">Empleo Ya!</a>
+                    <a class="navbar-brand p-0 m-0" href="../../public/index.php">Empleo Ya!</a>
                     </div>
                     <div class="col text-center">
                         <img src="../../../public/img/iconoJuan23.png" height="50" width="50">
@@ -37,7 +37,7 @@
                     <ul class="navbar-nav ms-auto ">
                         <div class='d-flex justify-content-center gap-15 align-items-center'>
 
-                             <a href="../../public/index.php">
+                            <a href="../../../public/index.php">
                                 <button class='btn-secondary button border-0' type='submit'>Cerrar Sesion</button>
                             </a>
 

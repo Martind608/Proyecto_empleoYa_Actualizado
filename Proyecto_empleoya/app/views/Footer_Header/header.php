@@ -25,7 +25,7 @@ $url="http://".$_SERVER['HTTP_HOST']."/Proyecto_empleoya/Proyecto_empleoya"
             <div class="container-fluid d-flex justify-content-center">
                 <div class="row align-items-center flex-column p-1 m-1">
                     <div class="col text-center">
-                       <a class="navbar-brand p-0 m-0" href="<?php echo $url; ?>/public/index.php">Empleo Ya!</a>
+                    <a class="navbar-brand p-0 m-0" href="<?php echo $url; ?>/public/index.php">Empleo Ya!</a>
                     </div>
                     <div class="col text-center">
                         <img src="<?php echo $url; ?>/public/img/iconoJuan23.png" height="50" width="50">

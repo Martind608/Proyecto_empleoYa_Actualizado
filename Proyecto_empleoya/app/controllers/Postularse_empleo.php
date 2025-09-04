@@ -9,17 +9,21 @@ $usuarioModelo = new UsuarioModelo($db);
 $controller = new UsuarioControlador($usuarioModelo);
 
 // Verifica si se envió el formulario y se desea postularse
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['accion']) && $_POST['accion'] === 'postularse') {
-    // Obtén otros datos del formulario, como IDEmpleo e IDPostulante
-    $IDEmpleo = $_POST['IDEmpleo'];
-    $IDPostulante = $_POST['IDPostulante'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && filter_input(INPUT_POST, 'accion') === 'postularse') {
+    // Obtén otros datos del formulario de manera segura, como IDEmpleo e IDPostulante
+    $IDEmpleo = filter_input(INPUT_POST, 'IDEmpleo', FILTER_VALIDATE_INT);
+    $IDPostulante = filter_input(INPUT_POST, 'IDPostulante', FILTER_VALIDATE_INT);
 
+    if ($IDEmpleo === false || $IDPostulante === false) {
+        echo 'Datos de postulación inválidos.';
+        exit;
+    }
     // Llama a la función en el controlador para insertar la postulación
     $resultado = $controller->insertarPostulacion($IDEmpleo, $IDPostulante);
 
     // Puedes manejar el resultado aquí y mostrar un mensaje de éxito o error al usuario
     if ($resultado) {
-         header("Location: ../public/index.php");
+        header("Location: ../public/index.php");
         // echo '¡Postulación exitosa!';
     } else {
         echo 'Error al postularse';
