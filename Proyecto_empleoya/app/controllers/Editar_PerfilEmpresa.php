@@ -1,6 +1,5 @@
 <?php
-
-
+require_once '../../config/app.php';
 require_once '../../config/database.php';
 require_once '../models/UsuarioModelo.php';
 require_once '../controllers/UsuarioControlador.php';
@@ -8,7 +7,7 @@ require_once '../controllers/UsuarioControlador.php';
 // Verificar si el usuario ha iniciado sesión 
 session_start();
 if (!isset($_SESSION['Email'])) {
-    header("Location: inicio_de_sesion.php"); // Redirige al inicio de sesión si no está autenticado
+    header('Location: ' . SERVERURL . 'app/views/inicio_de_sesion.php'); // Redirige al inicio de sesión si no está autenticado
     exit();
 }
 
@@ -33,7 +32,7 @@ $nuevaPassword = $_POST["password"];
 if ($emailContacto !== $email) {
     // El nuevo correo electrónico es diferente, verificamos si existe
     if ($controller->existeCorreoElectronico($emailContacto)) {
-        header("Location: ../views/Empresa/EditarEmpresa.php");
+        header('Location: ' . SERVERURL . 'app/views/Empresa/EditarEmpresa.php');
         $_SESSION['Registroincorrecto'] = true;
         exit();
     }
@@ -41,7 +40,7 @@ if ($emailContacto !== $email) {
 
 if ($controller->actualizarDatosEmpresaContacto($email, $razonSocial, $sitioWeb, $cuit, $emailContacto, $telefono, $ciudad, $nuevaPassword)) {
   
-    header("Location: ../views/Empresa/EditarEmpresa.php");
+    header('Location: ' . SERVERURL . 'app/views/Empresa/EditarEmpresa.php');
     $_SESSION['Email'] = $emailContacto;
     $_SESSION['exito_actualizacion'] = true;
     exit();

@@ -1,6 +1,8 @@
 <?php
-require_once '../../config/database.php'; 
-require_once '../models/UsuarioModelo.php'; 
+require_once '../../config/app.php';
+require_once '../../config/database.php';
+require_once '../models/UsuarioModelo.php';
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $db = new Database();
@@ -24,13 +26,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($usuarioModelo->registrarAutoridad($nombre,$email, $hashPassword, $telefono, $apellido,$verificado, $cargo, $ciudad)) {
         session_start();
         $_SESSION['altaexitosa'] = true;
-        header("Location: ../views/admin/AltasAut.php");
+        header('Location: ' . SERVERURL . 'app/views/admin/AltasAut.php');
 
         
     } else {
         session_start();
         $_SESSION['error_registro_autoridad'] = "El correo electrónico ya existe.";
-        header("Location: ../views/admin/AltasAut.php");
+        header('Location: ' . SERVERURL . 'app/views/admin/AltasAut.php');
     }
     
 }

@@ -14,9 +14,10 @@
 <body>
 
 <?php
-$url="http://".$_SERVER['HTTP_HOST']."/Proyecto_empleoya/Proyecto_empleoya"
+require_once __DIR__ . '/../../../config/app.php';
+    $url = SERVERURL;
+    ?>
 
-?>
     <header >
         <nav class="navbar navbar-expand-lg  p-0">
                 <a class="navbar-brand text-decoration-none ml-1" style="margin-left: 10px;" 

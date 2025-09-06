@@ -1,4 +1,6 @@
 <?php
+require_once '../../config/app.php';
+
 require_once '../../config/database.php';
 require_once '../models/UsuarioModelo.php';
 require_once '../controllers/UsuarioControlador.php';
@@ -15,7 +17,7 @@ if (isset($_GET['IDEmpleo'])) {
     // Llama a la función para cerrar la propuesta
     if ($controller->cerrarpropuesta($IDEmpleo)) {
         $_SESSION['exito_actualizacion'] = true;
-        header("Location: ../views/Empresa/Mispropuestas.php");
+        header('Location: ' . SERVERURL . 'app/views/Empresa/Mispropuestas.php');
     } else {
         // Manejar errores si la actualización falla
         echo "Error al actualizar los datos.";

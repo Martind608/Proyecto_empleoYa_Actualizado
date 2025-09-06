@@ -1,4 +1,5 @@
 <?php
+require_once '../../config/app.php';
 
 require_once '../../config/database.php';
 require_once '../models/UsuarioModelo.php';
@@ -7,7 +8,7 @@ require_once '../controllers/UsuarioControlador.php';
 // Verificar si el usuario ha iniciado sesión (puedes agregar más lógica aquí)
 session_start();
 if (!isset($_SESSION['Email'])) {
-    header("Location: inicio_de_sesion.php"); // Redirige al inicio de sesión si no está autenticado
+    header('Location: ' . SERVERURL . 'app/views/inicio_de_sesion.php'); // Redirige al inicio de sesión si no está autenticado
     exit();
 }
 
@@ -31,7 +32,7 @@ $nuevaPassword = $_POST["password"];
 if ($emailContacto !== $email) {
     // El nuevo correo electrónico es diferente, verificamos si existe
     if ($controller->existeCorreoElectronico($emailContacto)) {
-        header("Location: ../views/Postulante/EditarPostulante.php");
+        header('Location: ' . SERVERURL . 'app/views/Postulante/EditarPostulante.php');
         $_SESSION['Registroincorrecto'] = true;
         exit();
     }
@@ -47,7 +48,7 @@ if (isset($_FILES["cv"]) && $_FILES["cv"]["error"] === UPLOAD_ERR_OK) {
             // Verificar que el tamaño del archivo sea menor a 5MB
             if ($_FILES["cv"]["size"] > 5242880) {
                 $_SESSION["errorcv"] = true;
-                header("Location: ../views/Postulante/EditarPostulante.php");
+                header('Location: ' . SERVERURL . 'app/views/Postulante/EditarPostulante.php');
                 exit();
             }
     $carpetaDestino = "../../public/img/CV-Postulantes/";
@@ -70,7 +71,7 @@ if (isset($_FILES["cv"]) && $_FILES["cv"]["error"] === UPLOAD_ERR_OK) {
     if (move_uploaded_file($_FILES["cv"]["tmp_name"], $rutaCompleta)) {
         // Llama a la función para guardar los datos del postulante con el nombre del CV único
         if ($usuarioModelo->actualizarDatosPostulanteContacto($email, $nombre, $apellido, $telefono, $dni, $ciudad, $emailContacto, $rutaCompleta, $nuevaPassword)) {
-            header("Location: ../views/Postulante/EditarPostulante.php");
+            header('Location: ' . SERVERURL . 'app/views/Postulante/EditarPostulante.php');
             $_SESSION['Email'] = $emailContacto;
             $_SESSION['exito_actualizacion'] = true;
             exit();
@@ -84,7 +85,7 @@ if (isset($_FILES["cv"]) && $_FILES["cv"]["error"] === UPLOAD_ERR_OK) {
 } else {
             // $nombreCVActual = $usuarioModelo->obtenerNombreCVActual($ID);
     if ($usuarioModelo->actualizarDatosPostulanteContacto($email, $nombre, $apellido, $telefono, $dni, $ciudad, $emailContacto, $nombreCVActual, $nuevaPassword)) {
-        header("Location: ../views/Postulante/EditarPostulante.php");
+        header('Location: ' . SERVERURL . 'app/views/Postulante/EditarPostulante.php');
         $_SESSION['Email'] = $emailContacto;
         $_SESSION['exito_actualizacion'] = true;
         exit();

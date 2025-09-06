@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once '../../config/app.php';
 require_once ('./../../config/database.php');
 require_once ('UsuarioControlador.php');
 require_once(__DIR__ . '/../models/UsuarioModelo.php');
@@ -20,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $empresaEncontrada = $usuarioModelo->buscarEmpresa($palabraClave);
     $_SESSION['empresaEncontrada'] = $empresaEncontrada;
     // Redirige a la vista con los resultados
-    header("Location: ../views/admin/BajasEmpresa.php");
+    header('Location: ' . SERVERURL . 'app/views/admin/BajasEmpresa.php');
     exit();
 }
 

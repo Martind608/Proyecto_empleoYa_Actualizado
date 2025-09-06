@@ -1,4 +1,6 @@
 <?php
+require_once '../../config/app.php';
+
 require_once '../../config/database.php'; 
 require_once '../models/UsuarioModelo.php'; 
 
@@ -18,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Llama a la función en el modelo para registrar a la Empresa.
    
     if ($usuarioModelo->registrarAdministrador($email, $hashPassword,$verificado)) {
-        header("Location: ../views/index.php");
+        header('Location: ' . SERVERURL . 'app/views/index.php');
         echo "Registro del ADM exitoso. Puedes iniciar sesión ahora.";
     } else {
        

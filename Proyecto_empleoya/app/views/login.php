@@ -62,7 +62,7 @@
             <div class='col-12 '>
                 <div class='auth-card'>
                     <h3 class='text-center mb-3'>Iniciar Sesion</h3>
-                    <form action="../controllers/UsuarioControlador.php" method="POST"
+                        <form action="../controllers/LoginControlador.php" method="POST"
                         class='d-flex flex-column gap-15'>
                         <input class="form-control" type='Email' name='Email' placeholder='Email' required />
                         <input class="form-control" type='HashConstrasenia' name='HashConstrasenia'

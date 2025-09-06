@@ -12,9 +12,9 @@
     <title>Postulante</title>
 </head>
 <?php
-$url = "http://" . $_SERVER['HTTP_HOST'] . "/Proyecto_empleoya/Proyecto_empleoya"
-
-    ?>
+require_once __DIR__ . '/../../../config/app.php';
+$url = SERVERURL;
+?>
 
 <body>
     <header>

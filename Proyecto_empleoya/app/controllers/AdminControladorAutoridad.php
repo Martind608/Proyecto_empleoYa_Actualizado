@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-
+require_once '../../config/app.php';
 require_once ('./../../config/database.php');
 require_once ('UsuarioControlador.php');
 require_once(__DIR__ . '/../models/UsuarioModelo.php');
@@ -27,8 +27,8 @@ if (isset($_POST['accion'])) {
         // Realizar la acción de "Alta" aquí
         if ($usuarioModelo->BajaVerificado($idUsuario)) {
             unset($_SESSION['autEncontrada']);
-            header("Location: ../views/admin/BajasAutoridad.php");
-        } else {
+            header('Location: ' . SERVERURL . 'app/views/admin/BajasAutoridad.php');
+                } else {
             // Error: no se pudo actualizar
             echo "Error: no se pudo actualizar el campo 'verificado' para Alta.";
         }

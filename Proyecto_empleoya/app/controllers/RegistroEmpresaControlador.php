@@ -1,6 +1,7 @@
 <?php
-require_once '../../config/database.php'; 
-require_once '../models/UsuarioModelo.php'; 
+require_once '../../config/app.php';
+require_once '../../config/database.php';
+require_once '../models/UsuarioModelo.php';; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $db = new Database();
@@ -23,11 +24,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    session_start();
     if ($usuarioModelo->registrarEmpresa($RazonSocial, $SitioWeb, $CUIT, $email, $hashPassword, $telefono, $ciudad)) {
           
-        header("Location: ../views/Empresa/Registroempresa.php");
+        header('Location: ' . SERVERURL . 'app/views/Empresa/Registroempresa.php');
         $_SESSION['Registroexitoso'] = true;
         // echo "Registro de la Empresa exitoso. Puedes iniciar sesión ahora.";
     } else {
-        header("Location: ../views/Empresa/Registroempresa.php");
+        header('Location: ' . SERVERURL . 'app/views/Empresa/Registroempresa.php');
         $_SESSION['Registroincorrecto'] = true;
         // echo "Error en el registro de la Empresa. El correo electrónico ya existe.";
     }

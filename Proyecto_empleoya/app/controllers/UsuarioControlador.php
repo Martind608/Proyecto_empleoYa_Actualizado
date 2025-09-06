@@ -1,6 +1,8 @@
 <?php
 require_once(__DIR__ . '/../../config/database.php');
 // require_once '../../config/database.php';
+require_once(__DIR__ . '/../../config/app.php');
+
 // require_once '../models/UsuarioModelo.php';
 require_once(__DIR__ . '/../models/UsuarioModelo.php');
 
@@ -199,73 +201,7 @@ class UsuarioControlador
 
 
 
-// Aca se hace el login (Solo entra aca si se manda desde el formulario de login)
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST["FROM_LOGIN"]) && $_POST["FROM_LOGIN"] === "true") {
-        session_start();
-        $db = new Database();
-        $usuarioModelo = new UsuarioModelo($db);
-        $controller = new UsuarioControlador($usuarioModelo);
 
-        $email = $_POST["Email"];
-        $password = $_POST["HashConstrasenia"];
-
-        if ($controller->verificarCredenciales($email, $password)) {
-            // Obtén el tipo de usuario
-            $tipoUsuario = $controller->obtenerTipoUsuario($email);
-
-            // Verifica si el usuario está verificado
-            $verificado = $controller->verificarVerificado($email);
-
-            if ($verificado === 1) {
-                // Inicia la sesión
-                session_start();
-                // Guarda el tipo de usuario en la sesión
-                $_SESSION['Email'] = $email;
-                $_SESSION['tipo_usuario'] = $tipoUsuario;
-
-                // Redirige según el tipo de usuario
-                if ($tipoUsuario === 'postulante') {
-                    header("Location: ../views/index.php"); // Redirige a la página de postulante
-                    exit();
-                } elseif ($tipoUsuario === 'empresa') {
-                    header("Location: ../views/index.php"); // Redirige a la página de empresa
-                    exit();
-                } elseif ($tipoUsuario === 'administrador') {
-                    header("Location: ../views/index.php"); // Redirige a la página de empresa
-                    exit();
-                } elseif ($tipoUsuario === 'autoridad') {
-                    header("Location: ../views/index.php"); // Redirige a la página de empresa
-                    exit();
-                } else {
-                    // Redirige a la página principal o muestra un mensaje para otros tipos de usuario
-                    header("Location: index.php");
-
-                    exit();
-                }
-            } elseif ($verificado === 0) {
-                // El usuario no está verificado, redirige a la página de verificación
-                header("Location: ../views/login.php");
-                $_SESSION['credencialnoverificada'] = true;
-
-                exit();
-            } else {
-
-                // El usuario a sido dado de baja, redirige a la página de login
-                header("Location: ../views/login.php");
-                $_SESSION['Usuariodadodebaja'] = true;
-
-                exit();
-            }
-        } else {
-            // Las credenciales son incorrectas, redirige a la página "nose.php"
-            $_SESSION['credencialesincorrectas'] = true;
-            header("Location: ../views/login.php");
-
-            exit();
-        }
-    }
-}
 
 
 ?>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+require_once '../../config/app.php';
 require_once('./../../config/database.php');
 require_once('UsuarioControlador.php');
 require_once(__DIR__ . '/../models/UsuarioModelo.php');
@@ -28,7 +28,7 @@ if (isset($_GET['accion'])) {
         session_destroy(); // Destruir la sesión
         session_start();
         $_SESSION['Dadodebajapostulante'] = true;
-        header("Location: ../views/login.php");
+        header('Location: ' . SERVERURL . 'app/views/login.php');
 
 
 
@@ -43,7 +43,7 @@ if (isset($_GET['accion'])) {
         session_destroy(); // Destruir la sesión
         session_start();
         $_SESSION['Dadodebajaempresa'] = true;
-        header("Location: ../views/login.php");
+        header('Location: ' . SERVERURL . 'app/views/login.php');
 
 
 

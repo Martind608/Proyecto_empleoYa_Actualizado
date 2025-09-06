@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once '../../config/app.php';
 require_once ('./../../config/database.php');
 require_once ('UsuarioControlador.php');
 require_once(__DIR__ . '/../models/UsuarioModelo.php');
@@ -21,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $postulantesEncontrados = $usuarioModelo->buscarPostulante($palabraClave);
     $_SESSION['postulantesEncontrados'] = $postulantesEncontrados;
     // Redirige a la vista con los resultados
-    header("Location: ../views/admin/BajasPostulante.php");
+    header('Location: ' . SERVERURL . 'app/views/admin/BajasPostulante.php');
     exit();
 }
 

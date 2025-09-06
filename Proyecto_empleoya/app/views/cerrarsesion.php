@@ -8,7 +8,8 @@ session_unset();
 // Destruye la sesión
 session_destroy();
 
-// Redirecciona al usuario a la página de inicio de sesión
-header("Location: index.php");
+require_once __DIR__ . '/../../config/app.php';
+// Redirecciona al usuario a la página de inicio
+header('Location: ' . SERVERURL . 'app/views/index.php');
 exit();
 ?>

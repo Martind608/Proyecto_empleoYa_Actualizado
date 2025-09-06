@@ -1,7 +1,7 @@
 <?php
-require_once '../../config/database.php'; 
-require_once '../models/UsuarioModelo.php'; 
-
+require_once '../../config/app.php';
+require_once '../../config/database.php';
+require_once '../models/UsuarioModelo.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $db = new Database();
     $usuarioModelo = new UsuarioModelo($db);
@@ -23,10 +23,10 @@ session_start();
     if ($usuarioModelo->registrarPostulante($nombre, $apellido, $DNI, $email, $hashPassword, $telefono, $ciudad)) {
 
         
-        header("Location: ../views/Postulante/Registropostulante.php");
+        header('Location: ' . SERVERURL . 'app/views/Postulante/Registropostulante.php');
         $_SESSION['Registroexitoso'] = true;
     } else {
-        header("Location: ../views/Postulante/Registropostulante.php");
+        header('Location: ' . SERVERURL . 'app/views/Postulante/Registropostulante.php');
         $_SESSION['Registroincorrecto'] = true;
 
         // echo "Error en el registro de postulante. El correo electrónico ya existe.";

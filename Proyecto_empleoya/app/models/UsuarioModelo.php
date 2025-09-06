@@ -192,14 +192,16 @@ public function obtenerDatosContacto($idContacto) {
     return $contacto;
 }
 
- // Verifica si un correo electrónico ya existe en la base de datos
- public function existeCorreoElectronico($email) {
+//  Verifica si un correo electrónico ya existe en la base de datos
+public function existeCorreoElectronico($email) {
     $query = "SELECT COUNT(*) FROM usuarios WHERE Email = ?";
     $stmt = $this->conexion->conn->prepare($query);
     $stmt->bind_param("s", $email);
     $stmt->execute();
+    $count = 0;
     $stmt->bind_result($count);
     $stmt->fetch();
+    $stmt->close();
     return ($count > 0);
 }
 

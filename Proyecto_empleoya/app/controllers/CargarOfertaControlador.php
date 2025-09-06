@@ -1,6 +1,7 @@
 <?php
 require_once '../../config/database.php'; // Asegúrate de tener el archivo de configuración de la base de datos
 require_once '../models/UsuarioModelo.php'; // Asegúrate de tener el modelo de usuario importado
+require_once '../../config/app.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $db = new Database();
@@ -36,7 +37,7 @@ if (isset($_FILES["flyer"]) && $_FILES["flyer"]["error"] === UPLOAD_ERR_OK) {
     
             $_SESSION['publicacionexitosa'] = true;
             // Registro exitoso, redirige a una página de inicio de sesión o muestra un mensaje de éxito.
-            header("Location: ../views/Empresa/PublicarOferta.php");
+            header('Location: ' . SERVERURL . 'app/views/Empresa/PublicarOferta.php');
            
         } else {
             // Error en el registro, muestra un mensaje de error.
@@ -50,7 +51,7 @@ if (isset($_FILES["flyer"]) && $_FILES["flyer"]["error"] === UPLOAD_ERR_OK) {
         session_start();
     
         $_SESSION['publicacionexitosa'] = true;
-        header("Location: ../views/Empresa/PublicarOferta.php"); 
+        header('Location: ' . SERVERURL . 'app/views/Empresa/PublicarOferta.php');
 
 }
 
@@ -58,12 +59,3 @@ if (isset($_FILES["flyer"]) && $_FILES["flyer"]["error"] === UPLOAD_ERR_OK) {
 }
 
 ?>
-    <!-- // Si no se subió un archivo CV, actualiza solo los datos personales sin modificar el CV
-    if ($usuarioModelo->actualizarDatosPostulanteContacto($email, $nombre, $apellido, $telefono, $dni, $ciudad, $emailContacto, null, $nuevaPassword)) {
-        header("Location: ../views/Postulante/EditarPostulante.php");
-        $_SESSION['Email'] = $emailContacto;
-        $_SESSION['exito_actualizacion'] = true;
-        exit();
-    } else {
-        // Error en el registro, muestra un mensaje de error.
-        echo "Error al actualizar los datos";

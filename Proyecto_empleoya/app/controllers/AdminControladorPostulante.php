@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-
+require_once '../../config/app.php';
 require_once ('./../../config/database.php');
 require_once ('UsuarioControlador.php');
 require_once(__DIR__ . '/../models/UsuarioModelo.php');
@@ -26,20 +26,20 @@ if (isset($_POST['accion'])) {
     if ($accion === 'alta') {
         // Realizar la acción de "Alta" aquí
         if ($usuarioModelo->actualizarVerificado($idUsuario)) {
-            header("Location: ../views/admin/AltasPostulante.php");
+              header('Location: ' . SERVERURL . 'app/views/admin/AltasPostulante.php');
         } else {
             // Error: no se pudo actualizar
             echo "Error: no se pudo actualizar el campo 'verificado' para Alta.";
         }
     } elseif ($accion === 'rechazar') {
         $usuarioModelo->EliminarPostulante($idUsuario);
-        header("Location: ../views/admin/AltasPostulante.php");
+          header('Location: ' . SERVERURL . 'app/views/admin/AltasPostulante.php');
         echo "Acción de Rechazar realizada.";
     }elseif ($accion === 'dardebaja') {
         $usuarioModelo->BajaVerificado($idUsuario);
         $usuarioModelo->FechaBajaPostulante($idUsuario);
         unset($_SESSION['postulantesEncontrados']);
-        header("Location: ../views/admin/BajasPostulante.php");
+     header('Location: ' . SERVERURL . 'app/views/admin/BajasPostulante.php');
         echo "Acción de baja realizada.";
      } else {
         // Acción desconocida
