@@ -4,15 +4,11 @@ session_start();
 require_once ('./../../config/database.php');
 require_once ('UsuarioControlador.php');
 require_once(__DIR__ . '/../models/UsuarioModelo.php');
-require_once __DIR__ . '/../../config/csrf.php';
-
-verify_csrf_token();
 
 // Verificar si se ha enviado la acción "accion" desde el formulario
-
-$accion = filter_input(INPUT_POST, 'accion', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-$idUsuario = filter_input(INPUT_POST, 'IDUsuario', FILTER_VALIDATE_INT);
-if ($accion && $idUsuario !== false) {
+if (isset($_POST['accion'])) {
+    $accion = $_POST['accion'];
+    $idUsuario = $_POST['IDUsuario'];
 
     // Conectar a la base de datos
     $db = new Database();
@@ -20,7 +16,7 @@ if ($accion && $idUsuario !== false) {
     $controller = new UsuarioControlador($usuarioModelo);
 
     // Validar el valor de la variable $idUsuario
-    if ($idUsuario === false) {
+    if (!is_numeric($idUsuario)) {
         echo "Error: IDUsuario no es un número válido.";
         return;
     }
@@ -41,6 +37,12 @@ if ($accion && $idUsuario !== false) {
     } 
     elseif ($accion === 'baja') {
         $usuarioModelo->BajaVerificado($idUsuario);
+        $usuarioModelo-> Cancelarofertasporbajadeempresa($idUsuario);
+        $usuarioModelo-> FechaBajaEmpresa($idUsuario);
+        unset($_SESSION['empresaEncontrada']);
+        session_start();
+        $_SESSION['dadodebajaexitoso'] = true;
+
         header("Location: ../views/admin/BajasEmpresa.php");
         echo "Acción de baja .";
     }else {
@@ -48,7 +50,7 @@ if ($accion && $idUsuario !== false) {
         echo "Error: Acción desconocida.";
     }
 } else {
- // Error: "accion" o ID de usuario no válidos
-    echo "Error: Acción o ID de usuario no válidos.";
+    // Error: "accion" no está definida en la solicitud
+    echo "Error: Acción no está definida en la solicitud.";
 }
 ?>

@@ -1,0 +1,72 @@
+<?php
+session_start();
+?>
+<?php 
+require_once "../Footer_Header/headerEmpresa.php";
+?>
+    <section class="home-wrapper-1 py-5">
+        <div class='container-xxl'>
+            <div class="d-flex justify-content-center">
+                <div class="container-fluid">
+                    <div class="row d-flex justify-content-center">
+
+                                <div class="card card-body border border-5 rounded">
+                                    <h2 class="card-title d-flex justify-content-center">' . $oferta['Titulo'] . '</h2>
+                                    <p class="card-text">Fecha Publicacion: ' . $oferta['FechaPublicacion'] . '</p>
+                                    <p class="card-text"> Empresa: ' . $nombreEmpresa . '</p>
+                                    <p class="card-text"> Modalidad: ' . $oferta['Modalidad'] . '</p>
+                                    <p class="card-text"> Ubicacion: ' . $oferta['Ubicacion'] . '</p>
+                                    <p class="card-text"> Tipo de Empleo: ' . $oferta['TipoEmpleo'] . '</p>
+                                    <p class="card-text"> Descripcion: ' . $oferta['Descripcion'] . '</p>
+                                    <p class="card-text"> Salario: $' . $oferta['Salario'] . '</p>
+                                    <input type="hidden" class="form-control" name="id_empresa" value="' . $oferta['IDEmpresa'] . '">
+                                    <input type="hidden" name="IDEmpleo" value="' . $oferta['IDEmpleo'] . '">
+                                    <input type="hidden" name="IDPostulante" value="' . $idPostulante . '">
+                                </div>
+                        </div>
+
+                        <!-- MODAL (Ventana Emergente) -->
+                        <div class="modal fade" id="inicioSesion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">ADVERTENCIA!</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+        
+                                    <div class="modal-body">
+                                        Debe iniciar sesion para continuar
+                                    </div>
+        
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                            <a href="../views/login.php">
+                                                <button class='btn btn-primary border-0' type='submit'>Iniciar Sesion</button>
+                                            </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='p-1'>
+            <a href="<?php echo $url; ?>/app/views/Empresa/PublicarOferta.php">
+                <button type="button" class='button border-0 m-1'>
+                    Volver
+                </button>
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <?php
+        require_once "../Footer_Header/footer.php";
+    ?>
+
+
+</body>
+
+</html>

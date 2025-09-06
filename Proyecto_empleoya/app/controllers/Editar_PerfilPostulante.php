@@ -3,68 +3,95 @@
 require_once '../../config/database.php';
 require_once '../models/UsuarioModelo.php';
 require_once '../controllers/UsuarioControlador.php';
-require_once '../../config/csrf.php';
+
 // Verificar si el usuario ha iniciado sesión (puedes agregar más lógica aquí)
 session_start();
 if (!isset($_SESSION['Email'])) {
     header("Location: inicio_de_sesion.php"); // Redirige al inicio de sesión si no está autenticado
     exit();
 }
-verify_csrf_token();
+
 // Inicializa la instancia del controlador y el modelo
 $db = new Database();
 $usuarioModelo = new UsuarioModelo($db);
 $controller = new UsuarioControlador($usuarioModelo);
 
-// Obtener datos del formulario de manera segura
+// Obtener datos del formulario
 $email = $_SESSION['Email'];
-$errors = [];
+$nombre = $_POST["Nombre"];
+$apellido = $_POST["Apellido"];
+$telefono = $_POST["Telefono"];
+$dni = $_POST["DNI"];
+$ciudad = $_POST["Ciudad"];
+$emailContacto = $_POST["Email"];
+$nuevaPassword = $_POST["password"];
 
-$nombre = filter_input(INPUT_POST, "Nombre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-if (!$nombre) { $errors[] = "Nombre inválido."; }
 
-$apellido = filter_input(INPUT_POST, "Apellido", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-if (!$apellido) { $errors[] = "Apellido inválido."; }
+// Verificar si el nuevo correo electrónico es diferente del correo electrónico actual
+if ($emailContacto !== $email) {
+    // El nuevo correo electrónico es diferente, verificamos si existe
+    if ($controller->existeCorreoElectronico($emailContacto)) {
+        header("Location: ../views/Postulante/EditarPostulante.php");
+        $_SESSION['Registroincorrecto'] = true;
+        exit();
+    }
+}
 
-$telefono = filter_input(INPUT_POST, "Telefono", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-if (!$telefono) { $errors[] = "Teléfono inválido."; }
 
-$dni = filter_input(INPUT_POST, "DNI", FILTER_SANITIZE_NUMBER_INT);
-if (!$dni) { $errors[] = "DNI inválido."; }
 
-$ciudad = filter_input(INPUT_POST, "Ciudad", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-if (!$ciudad) { $errors[] = "Ciudad inválida."; }
 
-$emailContacto = filter_input(INPUT_POST, "Email", FILTER_VALIDATE_EMAIL);
-if (!$emailContacto) { $errors[] = "Email de contacto inválido."; }
+$ID=$usuarioModelo->obtenerIDUsuario($email);
+$nombreCVActual = $usuarioModelo->obtenerNombreCVActual($ID);
+// Verificar si se subió un archivo CV
+if (isset($_FILES["cv"]) && $_FILES["cv"]["error"] === UPLOAD_ERR_OK) {
+            // Verificar que el tamaño del archivo sea menor a 5MB
+            if ($_FILES["cv"]["size"] > 5242880) {
+                $_SESSION["errorcv"] = true;
+                header("Location: ../views/Postulante/EditarPostulante.php");
+                exit();
+            }
+    $carpetaDestino = "../../public/img/CV-Postulantes/";
+    $nombreArchivoOriginal = $_FILES["cv"]["name"];
+    
+    // Generar un nombre único para el archivo CV
+    $nombreArchivoUnico = uniqid() . "_" . $nombreArchivoOriginal;
+    $rutaCompleta = $carpetaDestino . $nombreArchivoUnico;
 
-// Manejo del archivo CV
-$cv = null;
-if (isset($_FILES["cv"]["tmp_name"])) {
-    $cv = file_get_contents($_FILES["cv"]["tmp_name"]);
+      // Eliminar el CV anterior si existe
+      if ($nombreCVActual !== null) {
+        $rutaCVAntiguo = $carpetaDestino . $nombreCVActual;
+        if (file_exists($rutaCVAntiguo)) {
+            unlink($rutaCVAntiguo);
+        }
+    }
+
+
+    // Mover el archivo CV al destino deseado
+    if (move_uploaded_file($_FILES["cv"]["tmp_name"], $rutaCompleta)) {
+        // Llama a la función para guardar los datos del postulante con el nombre del CV único
+        if ($usuarioModelo->actualizarDatosPostulanteContacto($email, $nombre, $apellido, $telefono, $dni, $ciudad, $emailContacto, $rutaCompleta, $nuevaPassword)) {
+            header("Location: ../views/Postulante/EditarPostulante.php");
+            $_SESSION['Email'] = $emailContacto;
+            $_SESSION['exito_actualizacion'] = true;
+            exit();
+        } else {
+            // Error en el registro, muestra un mensaje de error.
+            echo "Error al actualizar los datos";
+        }
+    } else {
+        echo "Hubo un error al subir el archivo CV.";
+    }
 } else {
-    $errors[] = "CV inválido.";
+            // $nombreCVActual = $usuarioModelo->obtenerNombreCVActual($ID);
+    if ($usuarioModelo->actualizarDatosPostulanteContacto($email, $nombre, $apellido, $telefono, $dni, $ciudad, $emailContacto, $nombreCVActual, $nuevaPassword)) {
+        header("Location: ../views/Postulante/EditarPostulante.php");
+        $_SESSION['Email'] = $emailContacto;
+        $_SESSION['exito_actualizacion'] = true;
+        exit();
+    } else {
+        // Error en el registro, muestra un mensaje de error.
+        echo "Error al actualizar los datos";
+    }
 }
-
-$nuevaPassword = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-if (!$nuevaPassword) { $errors[] = "Contraseña inválida."; }
-
-if ($errors) {
-    echo implode('<br>', $errors);
-    exit;
-}
-
-
-if ($controller->actualizarDatosPostulanteContacto($email, $nombre, $apellido, $telefono, $dni, $ciudad, $emailContacto, $cv, $nuevaPassword)) {
-    $_SESSION['exito_actualizacion'] = true;
-    header("Location: ../views/Postulante/EditarPostulante.php");
-    $_SESSION['Email'] = $emailContacto;
-    exit();
-} else {
-    // Manejar errores si la actualización falla
-    echo "Error al actualizar los datos.";
-}
-
-
 
 ?>
