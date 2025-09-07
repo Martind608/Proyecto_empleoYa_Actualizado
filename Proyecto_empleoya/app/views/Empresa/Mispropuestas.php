@@ -110,7 +110,7 @@ require_once "../Footer_Header/headerEmpresa.php";
         </div>
 
         <div class='p-1'>                    
-            <a href="<?php echo $url; ?>/app/views/index.php">
+            <a href="<?php echo $url; ?>/public/index.php">
                 <button type="button" class='button border-0 m-1'>
                     Volver
                 </button>

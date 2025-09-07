@@ -70,7 +70,7 @@ require_once "../Footer_Header/headerEmpresa.php";
                     <input type="file" class="form-control" id="flyer" name="flyer" accept=".pdf, .jpg, .jpeg, .png" />
                 </div>
 
-                <a href="<?php echo $url; ?>/app/views/index.php">
+                <a href="<?php echo $url; ?>/public/index.php">
                     <button type="button" class='button border-0 m-1'>
                         Volver
                     </button>

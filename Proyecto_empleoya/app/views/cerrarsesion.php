@@ -10,6 +10,6 @@ session_destroy();
 
 require_once __DIR__ . '/../../config/app.php';
 // Redirecciona al usuario a la página de inicio
-header('Location: ' . SERVERURL . 'app/views/index.php');
+header('Location: ' . SERVERURL . 'public/index.php');
 exit();
 ?>

@@ -76,7 +76,7 @@ require_once "../Footer_Header/headerEmpresa.php";
                 
             </div>
             <div class='p-1'>
-                    <a href="Mispropuestas.php">
+                    <a href="<?php echo $url; ?>app/views/Empresa/Mispropuestas.php">
                         <button type="button" class='button border-0 m-1'>
                             Volver
                         </button>

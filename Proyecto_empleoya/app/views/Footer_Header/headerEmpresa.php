@@ -21,7 +21,7 @@ $url = SERVERURL;
         <nav class="navbar navbar-expand-lg ">
             <div class="container-fluid">
                 <a class="navbar-brand text-decoration-none ml-1" style="margin-left: 10px;"
-                    href="<?php echo $url; ?>/app/views/index.php"><img src="<?php echo $url; ?>/public/img/logoo.png"
+                    href="<?php echo $url; ?>/public/index.php"><img src="<?php echo $url; ?>/public/img/logoo.png"
                         height="70" width="
                 " /></a>
 

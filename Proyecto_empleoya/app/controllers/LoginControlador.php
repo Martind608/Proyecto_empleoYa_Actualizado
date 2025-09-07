@@ -29,7 +29,7 @@ class LoginControlador
             if ($verificado === 1) {
                 $_SESSION['Email'] = $email;
                 $_SESSION['tipo_usuario'] = $tipoUsuario;
-                    header('Location: ' . SERVERURL . 'app/views/index.php'); // Redirige a la página de postulante
+                    header('Location: ' . SERVERURL . 'public/index.php'); // Redirige a la página de postulante
                 exit();
             } elseif ($verificado === 0) {
                 $_SESSION['credencialnoverificada'] = true;
